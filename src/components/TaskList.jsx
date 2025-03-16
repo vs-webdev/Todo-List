@@ -1,12 +1,22 @@
-import { useState } from "react"
+import { useTask } from "../contexts/TaskProvider"
+import './TaskList.css'
 
 const TaskList = () => {
-  const [tasks, setTasks] = useState([
-    {id: 1, title: 'Shopping'}
-  ])
+  const {tasks, setTasks} = useTask()
+
+  const handleDeleteTask = (taskId) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId))
+  }
+
   return (
-    <div>
-      {tasks.map(task => <div key={task.id}>{task.title}</div>)}
+    <div className="tasks-container">
+      <ul className="tasks-inner">
+        {tasks.map(task => 
+        <li key={task.id} className="tasks-item">
+          <div className="task-desc">{task.description}</div>
+          <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+        </li>)}
+      </ul>
     </div>
   )
 }

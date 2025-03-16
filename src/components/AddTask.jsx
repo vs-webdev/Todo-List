@@ -1,18 +1,33 @@
-import { useTask } from '../contexts/TaskProvider'
-import './AddTask.css'
+import { useState } from 'react';
+import { useTask } from '../contexts/TaskProvider.jsx';
+import { v4 as uuidv4 } from 'uuid';
+import './AddTask.css';
 
 const AddTask = () => {
   const {isAddTaskModalOpen, setIsAddTaskModalOpen} = useTask()
-  console.log(isAddTaskModalOpen)
+  const {setTasks} = useTask()
+  const [inputValue, setInputValue] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!inputValue) return
+    setTasks(prev => [...prev, {id: uuidv4(), description: inputValue}])
+    setInputValue('')
+  }
+
   return (
     <>
       <div className='add-task-container'>
         <div className="add-task-inner">
             <div className={`add-task-modal ${isAddTaskModalOpen ? 'open' : ''}`}
             >
-              <form action="">
-                <input className='add-input' type="text" placeholder='Add Task...'/>
-                <button className='add-btn'>Add</button>
+              <form onSubmit={handleSubmit}>
+                <input className='add-input' 
+                type="text" 
+                placeholder='Add Task...'
+                onChange={(e) => setInputValue(e.target.value)}
+                value={inputValue}/>
+                <button className='add-btn' type='submit'>Add</button>
               </form>
             </div>
           <button className='add-toggle' onClick={() => setIsAddTaskModalOpen(prev => !prev)}>

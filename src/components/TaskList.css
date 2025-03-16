@@ -1,0 +1,10 @@
+.tasks-container{
+  margin: 0.5rem 0;
+}
+
+.tasks-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid;
+}

@@ -6,7 +6,8 @@ export const TaskProvider = ({children}) => {
   const [selectedTaskId, setSelectedTaskId] = useState(null)
   const [multipleSelectedTasks, setMultipleSelectedTasks] = useState([])
   const [search, setSearch] = useState('')
-  const [editModalOpen, setEditModalOpen] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false)
 
   const contextValue = {
     selectedTaskId,
@@ -15,8 +16,10 @@ export const TaskProvider = ({children}) => {
     setMultipleSelectedTasks,
     search,
     setSearch,
-    editModalOpen,
-    setEditModalOpen,
+    isEditModalOpen,
+    setIsEditModalOpen,
+    isAddTaskModalOpen,
+    setIsAddTaskModalOpen,
   }
   return (
     <TaskContext.Provider value={contextValue}>

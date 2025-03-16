@@ -1,4 +1,6 @@
+import { TaskProvider } from '../contexts/TaskProvider'
 import AddTask from './AddTask'
+import TaskList from './TaskList'
 import './Todo.css'
 
 const Todo = () => {
@@ -10,7 +12,11 @@ const Todo = () => {
         <button className="sort">All</button>
         <button>Theme</button>
       </div>
-      <AddTask />
+
+      <TaskProvider >
+        <TaskList />
+        <AddTask />
+      </TaskProvider>
     </div>
   )
 }

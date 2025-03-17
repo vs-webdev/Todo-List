@@ -10,8 +10,8 @@ export const TaskProvider = ({children}) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false)
   const [tasks, setTasks] = useState([
-    {id: uuidv4(), description: 'Wash Car'},
-    {id: uuidv4(), description: 'Repair Door'},
+    {id: uuidv4(), description: 'Wash Car', completed: false},
+    {id: uuidv4(), description: 'Repair Door', completed: false},
   ])
 
   const contextValue = {

@@ -1,5 +1,5 @@
 .tasks-container{
-  margin: 0.5rem 0;
+  margin: .8rem 0;
 }
 
 .tasks-item{
@@ -7,4 +7,25 @@
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid;
+}
+
+.task-toggle{
+  width: 24px;
+  height: 24px;
+}
+
+.task-content{
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.task-description{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.task-description.complete{
+  color: #ffffff7c;
+  text-decoration: line-through;
 }

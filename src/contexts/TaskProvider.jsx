@@ -9,6 +9,7 @@ export const TaskProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false)
+  const [sortOption, setSortOption] = useState('All')
   const [tasks, setTasks] = useState([
     {id: uuidv4(), description: 'Wash Car', completed: false},
     {id: uuidv4(), description: 'Repair Door', completed: false},
@@ -25,6 +26,8 @@ export const TaskProvider = ({children}) => {
     setIsEditModalOpen,
     isAddTaskModalOpen,
     setIsAddTaskModalOpen,
+    sortOption, 
+    setSortOption,
     tasks,
     setTasks,
   }

@@ -29,3 +29,17 @@
   color: #ffffff7c;
   text-decoration: line-through;
 }
+
+.task-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-actions > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}

@@ -11,7 +11,7 @@ const AddTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!inputValue) return
-    setTasks(prev => [...prev, {id: uuidv4(), description: inputValue}])
+    setTasks(prev => [...prev, {id: uuidv4(), description: inputValue, completed: false}])
     setInputValue('')
   }
 

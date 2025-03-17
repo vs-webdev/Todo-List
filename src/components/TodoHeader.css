@@ -1,0 +1,75 @@
+
+.todo-header{
+  height: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-header > button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px .8rem 0px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.sort-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 5px;
+  background-color: #6b6b6b;
+  padding: .5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.sort-container .sort-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.sort-container span{
+  margin-right: 5px;
+}
+
+.sort-container .options{
+  position: absolute;
+  top: 110%;
+  background-color: #6b6b6b;
+  border-radius: 5px;
+  /* padding: .5rem 0; */
+  overflow: hidden;
+}
+
+.options span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .4rem .7rem;
+}
+
+.options .opt:hover{
+  background-color: #898989;
+}
+
+.angledown{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search{
+  height: 100%;
+  width: 595px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px 10px;
+}

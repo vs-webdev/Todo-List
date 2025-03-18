@@ -1,5 +1,7 @@
 .tasks-container{
   margin: .8rem 0;
+  height: 440px;
+  overflow: auto;
 }
 
 .tasks-item{

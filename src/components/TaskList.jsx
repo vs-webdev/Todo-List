@@ -6,10 +6,10 @@ import { useMemo, useState } from "react";
 import Modal from "./modals/Modal";
 
 const TaskList = () => {
-  const {tasks, setTasks, sortOption, search, isModalOpen, setIsModalOpen} = useTask()
+  const {tasks, setTasks, filterOption, search, isModalOpen, setIsModalOpen} = useTask()
   const [modalContent, setModalContent] = useState(null)
 
-  const sortedTasksList = useMemo(() => {
+  const filteredTasks = useMemo(() => {
     let newTasks;
     if (search){
       newTasks = tasks.filter(task => 
@@ -18,13 +18,13 @@ const TaskList = () => {
       newTasks = tasks
     }
 
-    if (sortOption === 'Complete'){
+    if (filterOption === 'Complete'){
       return newTasks.filter(task => task.completed === true)
-    } else if (sortOption === 'Incomplete'){
+    } else if (filterOption === 'Incomplete'){
       return newTasks.filter(task => task.completed === false)
     } 
     return newTasks
-  }, [sortOption, tasks, search])
+  }, [filterOption, tasks, search])
 
   const handleDeleteTask = (taskId) => {
     setIsModalOpen(true)
@@ -55,22 +55,26 @@ const TaskList = () => {
     : <div className="tasks-container">
       {search && 
       <div>
-        {`${sortedTasksList.length} Task${sortedTasksList.length > 1 ? 's' : ''} Found`}
+        {`${filteredTasks.length} Task${filteredTasks.length > 1 ? 's' : ''} Found`}
       </div>}
       <ul className="tasks-inner">
-        {sortedTasksList.map(task => 
+        {filteredTasks.map(task => 
         <li key={task.id} className="tasks-item">
+
           <div className="task-content">
-            <input 
-              className="task-toggle" 
-              type="checkbox" 
-              checked={task.completed}
-              onChange={() => toggleComplete(task.id)} 
-              />
+            <label className="checkbox-wrapper">
+              <input
+                type="checkbox"
+                checked={task.completed}
+                onChange={() => toggleComplete(task.id)}
+                />
+                <span className="custom-checkbox"></span>
+            </label>
             <h2 className={`task-description ${task.completed ? 'complete' : ''}`}>
               {task.description}
             </h2>
           </div>
+
           <div className="task-actions">
             <button onClick={() => handleTaskEdit(task.id)}>
               <FiEdit3 size={20}/>
@@ -79,6 +83,7 @@ const TaskList = () => {
               <MdOutlineDeleteForever size={20} />
             </button>
           </div>
+
         </li>)}
       </ul>
     </div>}

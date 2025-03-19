@@ -9,7 +9,7 @@ export const TaskProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false)
-  const [sortOption, setSortOption] = useState('All')
+  const [filterOption, setFilterOption] = useState('All')
   const [tasks, setTasks] = useState([
     {id: uuidv4(), description: 'Wash Car', completed: false},
     {id: uuidv4(), description: 'Repair Door', completed: false},
@@ -28,8 +28,8 @@ export const TaskProvider = ({children}) => {
     setIsModalOpen,
     isAddTaskModalOpen,
     setIsAddTaskModalOpen,
-    sortOption, 
-    setSortOption,
+    filterOption, 
+    setFilterOption,
   }
   return (
     <TaskContext.Provider value={contextValue}>

@@ -9,4 +9,5 @@
   font-size: 2rem;
   text-transform: uppercase;
   margin: 40px 0px 18px;
+  color: var(--text-primary);
 }

@@ -4,10 +4,12 @@ import { CgSun } from "react-icons/cg";
 import { FaAngleDown } from "react-icons/fa";
 import { useEffect, useRef, useState } from 'react';
 import { useTask } from "../contexts/TaskProvider";
+import { useTheme } from '../contexts/ThemeProvider';
 
 const TodoHeader = () => {
-  const {sortOption, setSortOption, search, setSearch} = useTask()
-  const options = ['All', 'Complete', 'Incomplete']
+  const {filterOption, setFilterOption, search, setSearch} = useTask()
+  const {theme, setTheme} = useTheme()
+  const filterOptions = ['All', 'Complete', 'Incomplete']
   const [isDropdownOpen, SetIsDropDown] = useState(false)
   const dropdownRef = useRef(null)
 
@@ -22,32 +24,33 @@ const TodoHeader = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const handleOptionClick = (option) => {
-    setSortOption(option)
-  }
-
   return (
     <div className='todo-header'>
       <input type="text" className='search' placeholder='Search note...'
         onChange={e => setSearch(e.target.value)}
         value={search}
       />
-      <div className="sort-container" ref={dropdownRef} onClick={() => SetIsDropDown(prev => !prev)}>
-        <div className="sort-details">
-          <span>{sortOption}</span>
+      <div className="filter-container" ref={dropdownRef} onClick={() => SetIsDropDown(prev => !prev)}>
+        <div className="filter-details">
+          <span>{filterOption}</span>
           <div className='angledown'><FaAngleDown /></div>
         </div>
 
         {isDropdownOpen &&
           <ul className="options">
-            {options.map((option, index) => 
-            <li className='opt' key={index} onClick={() => handleOptionClick(option)}>
+            {filterOptions.map((option, index) => 
+            <li className='opt' key={index} onClick={() => setFilterOption(option)}>
               <span>{option}</span>
             </li>)}
           </ul>}
 
       </div>
-      <button className='theme-btn'><MdOutlineDarkMode size={23} /></button>
+      <button className='theme-btn' onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}>
+        {theme === 'dark'
+        ? <MdOutlineDarkMode size={23} />
+        : <CgSun size={23} />
+      }
+      </button>
     </div>
   )
 }

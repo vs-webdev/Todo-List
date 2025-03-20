@@ -26,11 +26,12 @@ const TaskList = () => {
     return newTasks
   }, [filterOption, tasks, search])
 
-  const handleDeleteTask = (taskId) => {
+  const handleDeleteTask = (taskId, description) => {
     setIsModalOpen(true)
     setModalContent({
       title: 'Delete',
       taskId,
+      description,
     })
   }
 
@@ -40,11 +41,12 @@ const TaskList = () => {
     ))
   }
 
-  const handleTaskEdit = (taskId) => {
+  const handleTaskEdit = (taskId, description) => {
     setIsModalOpen(true)
     setModalContent({
       title: 'Edit',
       taskId,
+      description,
     })
   }
 
@@ -64,6 +66,7 @@ const TaskList = () => {
           <div className="task-content">
             <label className="checkbox-wrapper">
               <input
+                className="task-toggle"
                 type="checkbox"
                 checked={task.completed}
                 onChange={() => toggleComplete(task.id)}
@@ -76,10 +79,10 @@ const TaskList = () => {
           </div>
 
           <div className="task-actions">
-            <button onClick={() => handleTaskEdit(task.id)}>
+            <button onClick={() => handleTaskEdit(task.id, task.description)}>
               <FiEdit3 size={20}/>
             </button>
-            <button onClick={() => handleDeleteTask(task.id)}>
+            <button onClick={() => handleDeleteTask(task.id, task.description)}>
               <MdOutlineDeleteForever size={20} />
             </button>
           </div>

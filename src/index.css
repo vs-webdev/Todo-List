@@ -8,9 +8,8 @@
   --secondary-background: #6C63FF;
   --text-primary: #242424;
   --text-secondary: #6C63FF;
-  --purple: #6C63FF;
   --primary-border: #6C63FF;
-  --secondary-border: #242424;
+  --secondary-border: #6C63FF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,9 +19,11 @@
 
 [data-theme='dark']{
   --background: #242424;
-  --text-primary: rgba(255, 255, 255, 0.87);
-  --button-color: #6b6b6b;
-
+  --secondary-background: #6C63FF;
+  --text-primary: white;
+  --text-secondary: #6C63FF;
+  --primary-border: #6C63FF;
+  --secondary-border: white;
 }
 
 body {

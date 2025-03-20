@@ -1,6 +1,6 @@
 .tasks-container{
   margin: .8rem 0;
-  height: 440px;
+  height: 251px;
   overflow: auto;
 }
 
@@ -11,10 +11,17 @@
   border-bottom: 1px solid var(--primary-border);
 }
 
+.checkbox-wrapper{
+  position: relative;
+  height: 24px;
+}
+
 .checkbox-wrapper input[type="checkbox"]{
   cursor: pointer;
   position: absolute;
+  top: 0;
   opacity: 0;
+  inset: 0;
 }
 
 .custom-checkbox{
@@ -52,6 +59,7 @@
 }
 
 .task-actions > button {
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
